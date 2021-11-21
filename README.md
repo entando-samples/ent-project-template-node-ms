@@ -22,7 +22,7 @@ With this configuration, you can use the ent cli (https://dev.entando.org/next/d
 ## Local testing of the project
 You can use the following commands from the application folder to run the local stack
 * `ent prj xk start` - or stop to shutdown keycloak again.
-* `ent prj be-test-run` - to run the microservice
+* `cd src/main/node/` and `npm i && npm start` - to run the microservice
 * `ent prj fe-test-run` - to run the React frontend
 
 ## Local setup
