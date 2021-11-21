@@ -1,6 +1,10 @@
 # Deployment and installation
 With this configuration, you can use the ent cli (https://dev.entando.org/next/docs/reference/entando-cli.html) to perform the full deployment sequence:
 
+# Development notes
+## Tips
+* Check for the "CHANGE-IT" placeholders, replace it with your chosen docker image key
+
 ### Setup the project directory.
 1. Prepare the bundle directory: `cp -r bundle_src bundle`
 2. Initialize the project: `ent prj init`
@@ -14,10 +18,6 @@ With this configuration, you can use the ent cli (https://dev.entando.org/next/d
 4. Deploy (after connecting to k8s above): `ent prj deploy`
 5. Install the bundle via 1) App Builder, 2) `ent prj install`, or 3) `ent prj install --conflict-strategy=OVERRIDE` on subsequent installs.
 6. Iterate steps 1-4 to publish new versions.
-
-# Development notes
-## Tips
-* Check for the "CHANGE-IT" placeholders
 
 ## Local testing of the project
 You can use the following commands from the application folder to run the local stack
