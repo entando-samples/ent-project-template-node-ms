@@ -1,4 +1,4 @@
-code: ent-prj-tmpl-bundle
+code: ent-prj-tmpl-node-bundle
 description: Template for ent projects
 components:
   plugins:

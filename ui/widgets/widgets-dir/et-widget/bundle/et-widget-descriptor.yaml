@@ -1,0 +1,6 @@
+code: et-app-node-templ
+titles:
+  en: Entando Template MF with node MS
+  it: Entando Template MF with node MS
+group: free
+customUiPath: et-widget.ftl
