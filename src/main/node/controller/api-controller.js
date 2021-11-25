@@ -4,7 +4,7 @@ const keycloak = require('../config/keycloak-config.js').getKeycloak();
 
 /**
  * @swagger
- * /api/mymetric:
+ * /api/example:
  *   get:
  *     description: Returns a custom metric
  *     responses:
