@@ -31,20 +31,17 @@ app.use(session({
 const keycloak = require('./config/keycloak-config.js').initKeycloak();
 
 
-app.use(rewrite(contextPath+'/*', '/$1'));
+app.use(rewrite(contextPath + '/*', '/$1'));
 app.use(keycloak.middleware());
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
-
-//app.use(contextPath,express.static(path.join(__dirname, 'public')));
 
 
 var apiController = require('./controller/api-controller.js');
 var healthController = require('./controller/health-controller.js');
-
 
 
 app.use('/api', apiController);
@@ -87,7 +84,7 @@ const options = {
                     "type": "oauth2",
                     "flows": {
                         "implicit": {
-                            "authorizationUrl": process.env["KEYCLOAK_AUTH_URL"]+"/realms/"+process.env["KEYCLOAK_REALM"]+"/protocol/openid-connect/auth",
+                            "authorizationUrl": process.env["KEYCLOAK_AUTH_URL"] + "/realms/" + process.env["KEYCLOAK_REALM"] + "/protocol/openid-connect/auth",
                             "scopes": {}
                         }
                     }
@@ -99,15 +96,21 @@ const options = {
 };
 
 const openapiSpecification = swaggerJsdoc(options);
-/*
-app.use(contextPath+'/api-docs', function (req, res, next) {
-    res.json(openapiSpecification)
-    next();
-});
-*/
 
+const setup = function (req, resp) {
+    let toExecute
+    if (!toExecute) {
+        toExecute = swaggerUi.setup(openapiSpecification, {
+            swaggerOptions: {
+                oauth2RedirectUrl:
+                    req.protocol + "://" + req.headers["host"] + contextPath + '/' + encodeURIComponent('oauth2-redirect.html')
+            }
+        })
+    }
+    toExecute(req, resp)
+}
 
 //https://github.com/scottie1984/swagger-ui-express/issues/152
-app.use('/', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+app.use('/', swaggerUi.serve, setup);
 
 module.exports = app;
