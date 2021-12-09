@@ -1,6 +1,6 @@
 {
   "name": "node-kc-microservice",
-  "version": "0.0.0",
+  "version": "0.0.1-SNAPSHOT",
   "private": true,
   "scripts": {
     "start-nodemon": "DEBUG=* PORT=8081 nodemon ./bin/www",
