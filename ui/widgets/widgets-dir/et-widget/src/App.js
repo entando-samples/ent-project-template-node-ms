@@ -1,5 +1,6 @@
 import {getData} from "./integration/Integration";
 import {useState} from "react";
+import './App.css';
 
 function App() {
     const [payload, setPayload] = useState("")
@@ -9,7 +10,7 @@ function App() {
 
     return (
         <>
-            <div>
+            <div className="btn-div">
                 <button onClick={callTheApi}>call the api</button>
             </div>
             <div>
