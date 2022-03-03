@@ -19,7 +19,7 @@ function App() {
             <div className="btn-div">
                 <button onClick={callTheApi}>call the api</button>
             </div>
-            <div>
+            <div className="btn-div">
                 <span>{payload}</span>
             </div>
         </>
